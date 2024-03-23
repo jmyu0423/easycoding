@@ -35,4 +35,9 @@ public class BoardController {
     public JsonResult deleteBoards(@RequestBody BoardVo boardVo, HttpServletRequest request) throws Exception{
         return boardService.deleteBoards(boardVo, request);
     }
+
+    @RequestMapping(value="/updateBoards")
+    public JsonResult updateBoards(@RequestBody BoardVo boardVo, HttpServletRequest request) throws Exception{
+        return boardService.updateBoards(boardVo, request);
+    }
 }

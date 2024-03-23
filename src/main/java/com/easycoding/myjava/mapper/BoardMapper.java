@@ -12,4 +12,6 @@ public interface BoardMapper {
     public void createBoard(BoardVo boardVo);
 
     public void deleteBoards(BoardVo boardVo);
+
+    public void updateBoards(BoardVo boardVo);
 }

@@ -35,9 +35,18 @@ public class BoardService {
     }
 
     public JsonResult deleteBoards(BoardVo boardVo, HttpServletRequest request) throws Exception{
-        ObjectMapper objectMapper = new ObjectMapper();
         try{
             boardMapper.deleteBoards(boardVo);
+            return new JsonResult(JsonResult.RESULT.SUCCESS, messageSourceAccessor.getMessage("common.message.success"));
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new JsonResult(JsonResult.RESULT.FAIL, e.getMessage());
+        }
+    }
+
+    public JsonResult updateBoards(BoardVo boardVo, HttpServletRequest request) throws Exception{
+        try{
+            boardMapper.updateBoards(boardVo);
             return new JsonResult(JsonResult.RESULT.SUCCESS, messageSourceAccessor.getMessage("common.message.success"));
         }catch (Exception e) {
             System.out.println(e.getMessage());

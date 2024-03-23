@@ -36,4 +36,12 @@
         </foreach>
         )
     </delete>
+
+    <update id="updateBoards" parameterType="com.easycoding.myjava.entity.board.BoardVo">
+        update board set
+        title = #{title}
+        ,content = #{content}
+        ,upd_date = NOW()
+        where seq = #{seq}
+    </update>
 </mapper>
