@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.easycoding.myjava.mapper.BoardMapper">
+
+    <select id="selectBoardList" parameterType="com.easycoding.myjava.entity.board.BoardVo" resultType="com.easycoding.myjava.entity.board.BoardVo">
+        select * from Board
+    </select>
+
+    <insert id="createBoard" parameterType="com.easycoding.myjava.entity.board.BoardVo">
+        insert into board
+        (
+            title,
+            content,
+            reg_seq,
+            reg_date,
+            upd_date
+        )
+        VALUES
+        (
+            #{title},
+            #{content},
+            #{regSeq},
+            NOW(),
+            NOW()
+        )
+    </insert>
+
+    <delete id="deleteBoards" parameterType="com.easycoding.myjava.entity.board.BoardVo">
+        delete
+        from board
+        where seq in (
+        <foreach collection="seqList" item="arr" separator=",">
+            #{arr}
+        </foreach>
+        )
+    </delete>
+</mapper>
